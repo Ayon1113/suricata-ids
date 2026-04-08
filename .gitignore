@@ -1,0 +1,17 @@
+# Suricata log output - generated at runtime, can be very large
+logs/
+
+# Suricata config - generated per machine using the setup command
+config/suricata.yaml
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/

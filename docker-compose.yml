@@ -1,0 +1,40 @@
+services:
+  suricata:
+    build: .
+    container_name: suricata-ids
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    networks:
+      - ids-network
+    volumes:
+      - ./logs:/var/log/suricata
+      - ./rules:/etc/suricata/rules
+      - ./config:/etc/suricata
+    restart: unless-stopped
+
+  attacker:
+    image: ubuntu:22.04
+    container_name: attacker
+    networks:
+      - ids-network
+    command: sleep infinity
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+
+  dashboard:
+    build: ./dashboard
+    container_name: suricata-dashboard
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/var/log/suricata
+    networks:
+      - ids-network
+    restart: unless-stopped
+
+networks:
+  ids-network:
+    driver: bridge

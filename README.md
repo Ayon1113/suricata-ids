@@ -26,7 +26,7 @@ A fully containerized IDS built with Suricata and Docker. Monitors network traff
 ### 1. Clone the repository
 
 ```powershell
-git clone https://github.com/yourusername/suricata-ids.git
+git clone https://github.com/Ayon1113/g-suricata-ids.git
 cd suricata-ids
 ```
 
